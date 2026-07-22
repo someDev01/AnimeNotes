@@ -25,7 +25,7 @@ export class App implements OnInit {
     
     if(!session) return;
     
-    this.http.get("https://localhost:7135/Auth/api/me",
+    this.http.get("https://45.155.102.22:7135/Auth/api/me",
       {
         headers:{
           Session: session

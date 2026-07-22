@@ -46,7 +46,7 @@ export class Auth {
   if (this.isLogin) {
 
     this.http.post<any>(
-      "https://localhost:7135/Auth/api/login",
+      "https://45.155.102.22:7135/Auth/api/login",
       {
         login: this.login,
         password: this.password
