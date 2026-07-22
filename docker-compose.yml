@@ -4,7 +4,6 @@ services:
 
   postgres:
     image: postgres:17
-    container_name: postgres
 
     restart: always
 
@@ -23,8 +22,6 @@ services:
     build:
       context: ./backend/AnimeNotes
 
-    container_name: backend
-
     depends_on:
       - postgres
 
@@ -37,8 +34,6 @@ services:
   frontend:
     build:
       context: ./frontend
-
-    container_name: frontend
 
     depends_on:
       - backend
