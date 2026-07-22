@@ -1,0 +1,97 @@
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    animation:fade .25s;
+}
+
+.modal{
+
+    width:500px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    animation:scale .25s;
+
+    input{
+        display: flex;
+        padding: 10px 16px;
+        outline: none;
+    }
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+}
+
+.close-btn{
+    display: flex;
+    
+}
+
+.save-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    outline: none;
+    border: none;
+    background-color: rgb(0, 187, 255);
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@keyframes fade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+@keyframes scale{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}

@@ -1,0 +1,87 @@
+<div class="container">
+    <header class="header-content">
+        <div class="profile">
+            <div>В</div>
+            <p>Добро пожаловать</p>
+        </div>
+        <button (click)="openModal()">Новая заметка</button>
+    </header>
+    <section class="section-input">
+        <input
+            placeholder="Поиск заметок..."
+        />
+    </section>
+    @if(notes.length !== 0){
+        <main class="main-content">
+            @for (note of notes; track note.id) {
+                <article class="card">
+                    <div class="card-img">
+                        <img src="" alt=""/>
+                    </div>
+                    <main class="card-content">
+                        <header class="card-header">
+                            <div>
+                                <h3>{{note.title}}</h3>
+                            </div>
+                            <span>Дунхуа</span>
+                        </header>
+                        <div class="content-properties">
+                            <div class="property">
+                                <div class="name">
+                                    <lucide-icon [img]="eye" [size]="18"></lucide-icon>
+                                    <p>Просмотренная</p>
+                                </div>
+                                <p class="value">{{note.watchedEpisode}}</p>
+                            </div>
+                            <div class="property">
+                                <div class="name">
+                                    <lucide-icon [img]="expected" [size]="18"></lucide-icon>
+                                    <p>Ожидаемая</p>
+                                </div>
+                                <p class="value">{{note.expectedEpisode}}</p>
+                            </div>
+                            <div class="property">
+                                <div class="name">
+                                    <lucide-icon [img]="hero" [size]="18"></lucide-icon>
+                                    <p>Герой</p>
+                                </div>
+                                <p class="value">{{note.hero}}</p>
+                            </div>
+                            <div class="property">
+                                <div class="name">
+                                    <lucide-icon [img]="source" [size]="18"></lucide-icon>
+                                    <p>Источник</p>
+                                </div>
+                                <p class="value">{{note.source}}</p>
+                            </div>
+                            <div class="property">
+                                <div class="name">
+                                    <lucide-icon [img]="date" [size]="18"></lucide-icon>
+                                    <p>Год выпуска</p>
+                                </div>
+                                <p class="value">{{note.createdAtYear}}</p>
+                            </div>
+                        </div>
+                    </main>
+                    <footer>
+                        <button class="edit-btn" (click)="openModal(note)">Редактировать</button>
+                        <button class="del-btn" (click)="deleteNote(note.id)">Удалить</button>
+                    </footer>
+                </article>
+            }  
+        </main>
+    }
+    @else{
+            <div class="no-notes">
+                <p>Тут появятся созданные вами заметки</p>
+            </div>
+        }
+</div>
+
+@if(showModal){
+    <app-note-modal 
+        [note]="selectedNote"
+        (close)="closeModal()"
+    ></app-note-modal>
+}
+

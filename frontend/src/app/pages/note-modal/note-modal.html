@@ -1,0 +1,61 @@
+
+<div class="overlay" (click)="closeModal()">
+
+    <div class="modal" (click)="$event.stopPropagation()">
+
+        <button class="close-btn" (click)="closeModal()">✖</button>
+
+        <h2>{{isEdit ? 'Редактирование заметки' : 'Новая заметка'}}</h2>
+
+        <section>
+            <label>Название</label>
+            <input
+                [(ngModel)]="title"
+            />
+        </section>
+
+        <section>
+            <label>Герой</label>
+            <input
+                [(ngModel)]="hero"
+            >
+        </section>
+
+        <section>
+            <label>Источник</label>
+            <input
+                [(ngModel)]="source"
+            >
+        </section>
+
+        <section>
+            <label>Просмотренная серия</label> 
+            <input
+                type="number"
+                [(ngModel)]="watchedEpisode"
+            >
+        </section>
+
+        <section>
+            <label>Ожидаемая серия</label>
+            <input
+                type="number"
+                [(ngModel)]="expectedEpisode"
+            >
+        </section>
+
+        <section>
+            <label>Год</label>
+            <input
+                type="number"
+                [(ngModel)]="date"
+            >
+        </section>
+
+        <button class="save-btn" (click)="save()">
+            Сохранить
+        </button>
+
+    </div>
+
+</div>

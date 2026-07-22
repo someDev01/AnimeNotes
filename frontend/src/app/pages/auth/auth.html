@@ -1,0 +1,107 @@
+<form class="form-auth" (ngSubmit)="submit()">
+    <div
+        class="toast"
+        [class.show]="showToast"
+        [class.success]="toastType === 'success'"
+        [class.error]="toastType === 'error'">
+
+        {{ toastMessage }}
+
+    </div>
+    <section class="section-switch">
+
+        <button
+            type="button"
+            class="login-btn"
+            [class.active]="isLogin"
+            (click)="changeMode(true)">
+
+            Вход
+
+        </button>
+
+        <button
+            type="button"
+            class="register-btn"
+            [class.active]="!isLogin"
+            (click)="changeMode(false)">
+
+            Регистрация
+
+        </button>
+
+    </section>
+
+    <header class="header-form">
+
+        <h2>
+
+            {{ isLogin ? 'С возвращением 👋' : 'Создать аккаунт' }}
+
+        </h2>
+
+        <p>
+
+            {{
+                isLogin
+                ? 'Войдите, чтобы продолжить вести свои аниме-заметки'
+                : 'Создайте аккаунт и начните собирать свою коллекцию'
+            }}
+
+        </p>
+
+    </header>
+
+    <main class="main-form">
+
+        <section class="section-input">
+
+            <label>Логин</label>
+
+            <input
+                type="text"
+                name="login"
+                [(ngModel)]="login"
+                placeholder="Введите логин">
+
+        </section>
+
+        <section class="section-input">
+
+            <label>Пароль</label>
+
+            <input
+                type="password"
+                name="password"
+                [(ngModel)]="password"
+                placeholder="Введите пароль">
+
+        </section>
+
+        @if(!isLogin){
+
+            <section class="section-input">
+
+                <label>Повторите пароль</label>
+
+                <input
+                    type="password"
+                    name="repeatPassword"
+                    [(ngModel)]="repeatPassword"
+                    placeholder="Повторите пароль">
+
+            </section>
+
+        }
+
+        <button
+            class="submit-btn"
+            type="submit">
+
+            {{ isLogin ? 'Войти' : 'Создать аккаунт' }}
+
+        </button>
+
+    </main>
+
+</form>
