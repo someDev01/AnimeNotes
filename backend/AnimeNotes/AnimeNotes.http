@@ -1,0 +1,6 @@
+@AnimeNotes_HostAddress = http://localhost:5227
+
+GET {{AnimeNotes_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

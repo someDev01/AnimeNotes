@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    image: postgres:17
+    container_name: postgres
+
+    restart: always
+
+    environment:
+      POSTGRES_DB: AnimeNotes
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend/AnimeNotes
+
+    container_name: backend
+
+    depends_on:
+      - postgres
+
+    environment:
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=AnimeNotes;Username=postgres;Password=123456
+
+    ports:
+      - "7135:8080"
+
+  frontend:
+    build:
+      context: ./frontend
+
+    container_name: frontend
+
+    depends_on:
+      - backend
+
+    ports:
+      - "4200:80"
+
+volumes:
+  postgres-data:
