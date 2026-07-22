@@ -38,6 +38,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<DataContext>();
+
+    await context.Database.MigrateAsync();
+}
+
 app.UseCors("Angular");
 app.MapControllers();
 app.Run();
