@@ -34,7 +34,7 @@ export class Content implements OnInit {
   const session = localStorage.getItem("session");
 
   this.http.get<AnimeNote[]>(
-    "https://45.155.102.22:7135/Note/all",
+    "http://45.155.102.22:7135/Note/all",
     {
       headers: {
         Session: session ?? ""
@@ -74,7 +74,7 @@ export class Content implements OnInit {
     const session = localStorage.getItem("session");
 
     this.http.delete(
-        `https://45.155.102.22:7135/Note/${id}`,
+        `http://45.155.102.22:7135/Note/${id}`,
         {
             headers: {
                 Session: session ?? ""

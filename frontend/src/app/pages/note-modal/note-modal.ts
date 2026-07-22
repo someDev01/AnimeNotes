@@ -74,7 +74,7 @@ export class NoteModal implements OnChanges {
   if (this.isEdit) {
 
     this.http.put(
-      "https://45.155.102.22:7135/Note",
+      "http://45.155.102.22:7135/Note",
       note,
       {
         headers: {
@@ -97,7 +97,7 @@ export class NoteModal implements OnChanges {
   } else {
 
     this.http.post(
-      "https://45.155.102.22:7135/Note",
+      "http://45.155.102.22:7135/Note",
       note,
       {
         headers: {
